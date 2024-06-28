@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="SignupForm.css">
+</head>
+<body>
+    <div class="signup-container">
+        <a href="/grihf-frontend_capstone_starter_code/Landing_Page/LandingPage.html"><image src="/grihf-frontend_capstone_starter_code/Navbar/Logo.svg"></a>
+        <h1>Sign Up</h1>
+        <p>Joined already? <a href="../LogInForm/LogInForm.html">Log In</a></p>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" name="role">
+                    <option value="">Select a role</option>
+                    <option value="">Doctor</option>
+                    <option value="">Patient</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="phone" id="phone" name="phone" placeholder="Enter your phone number">
+            </div>
+
+            <div class="form-group password-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="submit-button">Submit</button>
+                <button type="reset" class="reset-button">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.password-group {
+    position: relative;
+}
+
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-button,
+.reset-button {
+    width: 48%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.reset-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.reset-button:hover {
+    background-color: #c82333;
+}
+
+input:focus, select:focus {
+    outline: none; /* Remueve el contorno predeterminado */
+    border: 2px solid #007bff; /* Cambia el borde a un color azul claro */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Añade una sombra de caja azul claro */
+}
