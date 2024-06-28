@@ -102,3 +102,10 @@ input:focus, select:focus {
     outline: none; /* Remueve el contorno predeterminado */
     border: 2px solid #007bff; /* Cambia el borde a un color azul claro */
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Añade una sombra de caja azul claro */
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
