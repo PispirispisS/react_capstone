@@ -1,30 +1,49 @@
-import React, { useState } from 'react';
-import './LogInForm.css'; // Importa el archivo de estilos CSS para LogInForm
+import React, { useState, useEffect } from 'react';
+import './LogInForm.css'; // Mantener el archivo de estilos CSS para LogInForm
+import { Link, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../config';
 import Logo from '../../LogoSH.svg';
 
-const LogInForm = () => {
+const Login = () => {
+    const [password, setPassword] = useState("");
     const [email, setEmail] = useState('');
-    const [emailError, setEmailError] = useState('');
+    const navigate = useNavigate();
 
-    const validateEmail = (e) => {
-        const { value } = e.target;
-        setEmail(value);
-
-        if (value.includes('@')) {
-            setEmailError('');
-        } else {
-            setEmailError('Email must contain "@" symbol.');
+    useEffect(() => {
+        if (sessionStorage.getItem("auth-token")) {
+            navigate("/")
         }
-    };
+    }, [navigate]);
 
-    const handleSubmit = (e) => {
+    const login = async (e) => {
         e.preventDefault();
-        if (!email.includes('@')) {
-            setEmailError('Email must contain "@" symbol.');
+        const res = await fetch(`${API_URL}/api/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+        });
+        const json = await res.json();
+        
+        if (json.authtoken) {
+            sessionStorage.setItem('auth-token', json.authtoken);
+            sessionStorage.setItem('email', email);
+            const userName = email.split('@')[0];
+            sessionStorage.setItem("userName", userName);
+            navigate('/');
+            window.location.reload();
         } else {
-            setEmailError('');
-            // Lógica para enviar el formulario
-            console.log('Form submitted');
+            if (json.errors) {
+                for (const error of json.errors) {
+                    alert(error.msg);
+                }
+            } else {
+                alert(json.error);
+            }
         }
     };
 
@@ -32,8 +51,8 @@ const LogInForm = () => {
         <div className="login-container">
             <a href="/"><img src={Logo} alt="Logo" /></a>
             <h1>Log In</h1>
-            <p>New here? <a href="/signup">Sign Up</a></p>
-            <form onSubmit={handleSubmit} method="post">
+            <p>New here? <Link to="/signup">Sign Up</Link></p>
+            <form onSubmit={login} method="post">
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -42,14 +61,19 @@ const LogInForm = () => {
                         name="email"
                         placeholder="Enter your email"
                         value={email}
-                        onChange={validateEmail}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
-                    {emailError && <span className="error">{emailError}</span>}
                 </div>
-
-                <div className="form-group password-group">
+                <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" />
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 </div>
                 <div className="form-buttons">
                     <button type="submit" className="submit-button">Submit</button>
@@ -60,4 +84,5 @@ const LogInForm = () => {
     );
 }
 
-export default LogInForm;
+export default Login;
+
