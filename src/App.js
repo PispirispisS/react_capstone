@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar/Navbar.js';
 import LandingPage from './Components/Landing_Page/LandingPage.js';
 import SignUpForm from './Components/SignUpForm/SignupForm.js';
 import LogInForm from './Components/LogInForm/LogInForm.js';
+import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultationBooking/InstantConsultation.js'; // Importa el componente
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/signup" element={<SignUpForm />} />
                 <Route path="/login" element={<LogInForm />} />
+                <Route path="/instant-consultation" element={<InstantConsultation />} /> 
             </Routes>
         </Router>
     );

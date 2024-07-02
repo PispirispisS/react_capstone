@@ -37,6 +37,7 @@ function Navbar({ isAuthenticated, userName, handleLogout }) {
                     <li><a href="#appointments">Appointments</a></li>
                     <li><a href="#health-blog">Health Blog</a></li>
                     <li><a href="#reviews">Reviews</a></li>
+                    <li><Link to="/instant-consultation">Instant Consultation</Link></li> {/* Nuevo enlace agregado */}
                 </ul>
             </div>
         </nav>
@@ -44,6 +45,8 @@ function Navbar({ isAuthenticated, userName, handleLogout }) {
 }
 
 export default Navbar;
+
+
 
 
 
