@@ -110,3 +110,4 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
 };
 
 export default DoctorCard;
+

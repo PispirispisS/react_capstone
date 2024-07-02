@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import DoctorCard from './DoctorCard';
-import FindDoctorSearch from './FindDoctorSearch';
+import DoctorCard from './DoctorCard/DoctorCard.js';
+import FindDoctorSearch from './FindDoctorSearch/FindDoctorSearch.js';
 
 const BookingConsultation = () => {
   const [doctors, setDoctors] = useState([]);

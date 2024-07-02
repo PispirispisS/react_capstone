@@ -5,7 +5,7 @@ import LandingPage from './Components/Landing_Page/LandingPage.js';
 import SignUpForm from './Components/SignUpForm/SignupForm.js';
 import LogInForm from './Components/LogInForm/LogInForm.js';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultationBooking/InstantConsultation.js';
-import BookingConsultation from './Components/BookingConsultation/BookingConsultation'; // Importa el componente
+import BookingConsultation from './Components/BookingConsultation.js'; 
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);

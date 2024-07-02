@@ -190,3 +190,17 @@
     color: rgb(249, 60, 60);
   }
   
+  .doctor-card-container {
+    /* Otros estilos existentes */
+    text-align: center; 
+  }
+  
+  .bookedInfo {
+    text-align: center; 
+  }
+  
+  .bookedInfo button {
+    margin: 0 auto; /* Asegura que el botón esté centrado */
+    display: block; /* Hace que el botón ocupe un bloque completo para centrarlo */
+  }
+  
