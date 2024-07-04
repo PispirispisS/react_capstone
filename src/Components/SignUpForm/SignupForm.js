@@ -56,38 +56,42 @@ const Sign_Up = () => {
     };
 
     return (
-        <div className="signup-container">
-            <a href="/"><img src={Logo} alt="Logo" /></a>
-            <h1>Sign Up</h1>
-            <p>Joined already? <Link to="/login">Log In</Link></p>
-            <form method="POST" onSubmit={register}>
-                <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input value={name} onChange={(e) => setName(e.target.value)} type="text" id="name" name="name" placeholder="Enter your name" />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" id="email" name="email" placeholder="Enter your email" />
-                    {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
-                </div>
-                <div className="form-group">
-                    <label htmlFor="phone">Phone</label>
-                    <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" id="phone" name="phone" placeholder="Enter your phone number" />
-                    {phoneError && <div className="err" style={{ color: 'red' }}>{phoneError}</div>}
-                </div>
-                <div className="form-group password-group">
-                    <label htmlFor="password">Password</label>
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" placeholder="Enter your password" />
-                </div>
-                <div className="form-buttons">
-                    <button type="submit" className="submit-button">Submit</button>
-                    <button type="reset" className="reset-button">Reset</button>
-                </div>
-            </form>
+        <div className="signup-wrapper">
+            <div className="signup-container">
+                <a href="/"><img src={Logo} alt="Logo" /></a>
+                <h1>Sign Up</h1>
+                <p>Joined already? <Link to="/login">Log In</Link></p>
+                <form method="POST" onSubmit={register}>
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <input value={name} onChange={(e) => setName(e.target.value)} type="text" id="name" name="name" placeholder="Enter your name" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" id="email" name="email" placeholder="Enter your email" />
+                        {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="phone">Phone</label>
+                        <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" id="phone" name="phone" placeholder="Enter your phone number" />
+                        {phoneError && <div className="err" style={{ color: 'red' }}>{phoneError}</div>}
+                    </div>
+                    <div className="form-group password-group">
+                        <label htmlFor="password">Password</label>
+                        <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" placeholder="Enter your password" />
+                    </div>
+                    <div className="form-buttons">
+                        <button type="submit" className="submit-button">Submit</button>
+                        <button type="reset" className="reset-button">Reset</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }
 
 export default Sign_Up;
+
+
 
 
