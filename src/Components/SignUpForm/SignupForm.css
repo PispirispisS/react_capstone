@@ -1,22 +1,13 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.signup-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-}
-
 .signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+    padding: 20px;
+}
+
+.form-box {
     background-color: white;
     padding: 2rem;
     border-radius: 30px;
@@ -26,17 +17,16 @@ body {
     text-align: center;
 }
 
-.signup-container img {
-    display: block;
-    margin: 0 auto 1rem; /* Centra la imagen del logo */
+.logo {
+    height: 40px;
+    margin-bottom: 1rem;
 }
 
 h1 {
-    text-align: center;
+    margin-bottom: 1rem;
 }
 
 p {
-    text-align: center;
     margin-bottom: 1rem;
     color: #666;
 }
@@ -52,8 +42,6 @@ p a:hover {
 
 .form-group {
     margin-bottom: 1rem;
-    position: relative;
-    text-align: left; /* Alinea el texto de los labels a la izquierda */
 }
 
 .form-group label {
@@ -62,8 +50,7 @@ p a:hover {
     color: #333;
 }
 
-.form-group input,
-.form-group select {
+.form-group input {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ccc;
@@ -75,48 +62,27 @@ p a:hover {
     color: #aaa;
 }
 
-.password-group {
-    position: relative;
-}
-
-.form-buttons {
-    display: flex;
-    justify-content: space-between;
-}
-
-.submit-button,
-.reset-button {
-    width: 48%;
+button {
+    width: 100%;
     padding: 0.75rem;
     font-size: 1rem;
     border: none;
     border-radius: 8px;
+    background-color: #007bff;
+    color: white;
     cursor: pointer;
 }
 
-.submit-button {
-    background-color: #007bff;
-    color: white;
-}
-
-.submit-button:hover {
+button:hover {
     background-color: #0056b3;
 }
 
-.reset-button {
-    background-color: #dc3545;
-    color: white;
+input:focus {
+    outline: none;
+    border: 2px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.reset-button:hover {
-    background-color: #c82333;
-}
-
-input:focus, select:focus {
-    outline: none; /* Remueve el contorno predeterminado */
-    border: 2px solid #007bff; /* Cambia el borde a un color azul claro */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Añade una sombra de caja azul claro */
-}
 
 
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './LogInForm.css'; // Mantener el archivo de estilos CSS para LogInForm
 import { Link, useNavigate } from 'react-router-dom';
-import { API_URL } from '../../config';
 import Logo from '../../LogoSH.svg';
+import {API_URL} from '../../config.js'
 
 const Login = () => {
     const [password, setPassword] = useState("");
@@ -49,40 +49,40 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <a href="/"><img src={Logo} alt="Logo" /></a>
-            <h1>Log In</h1>
-            <p>New here? <Link to="/signup">Sign Up</Link></p>
-            <form onSubmit={login} method="post">
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Enter your password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <div className="form-buttons">
-                    <button type="submit" className="submit-button">Submit</button>
-                    <button type="reset" className="reset-button">Reset</button>
-                </div>
-            </form>
+            <div className="form-box">
+                <img src={Logo} alt="Logo" className="logo" />
+                <h1>Log In</h1>
+                <p>New here? <Link to="/signup">Sign Up</Link></p>
+                <form onSubmit={login} method="post">
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
         </div>
     );
 }
 
 export default Login;
+
 
