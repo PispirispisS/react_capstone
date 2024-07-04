@@ -1,0 +1,49 @@
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none; /* Se mostrará mediante la clase 'show' */
+}
+
+.notification-container.show {
+  display: block;
+}
+
+.notification-content {
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #888;
+}
+
+.notification-content h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.notification-content p {
+  margin-bottom: 15px;
+}
+
+.notification-content button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.notification-content button:hover {
+  background-color: #df372c;
+}
