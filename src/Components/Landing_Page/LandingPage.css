@@ -1,3 +1,5 @@
+/* LandingPage.css */
+
 /* Base styles */
 * {
     margin: 0;
@@ -8,6 +10,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: transparent; /* Ajusta el color de fondo para que coincida con el de la Navbar */
 }
 
 ul {
@@ -34,7 +37,7 @@ button, a, li {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: transparent;
+    background-color: transparent; /* Ajusta el color de fondo para que coincida con el de la Navbar */
     padding: 2rem 1rem;
 }
 
@@ -81,7 +84,7 @@ button, a, li {
 /* Navbar */
 /* Estilo de la barra de navegación */
 .navbar {
-    background-color: #fcfbfb;
+    background-color: transparent; /* Ajusta el color de fondo para que coincida con el de la LandingPage */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -170,3 +173,4 @@ button, a, li {
         padding: 10px 0;
     }
 }
+

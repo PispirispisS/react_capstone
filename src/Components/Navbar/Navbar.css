@@ -1,5 +1,7 @@
+/* Navbar.css */
+
 .navbar {
-    background-color: #fcfbfb;
+    background-color: transparent; /* Ajusta el color de fondo para que coincida con el de la LandingPage */
     display: flex;
     justify-content: space-between;
     align-items: center;
