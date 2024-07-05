@@ -64,3 +64,4 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
 };
 
 export default AppointmentForm;
+
