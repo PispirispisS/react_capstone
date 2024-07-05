@@ -1,92 +1,64 @@
 /* Navbar.css */
 
+/* Estilos generales para el navbar */
 .navbar {
-    background-color: transparent; /* Ajusta el color de fondo para que coincida con el de la LandingPage */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
-.navbar-left, .navbar-center, .navbar-right {
+.navbar-logo img {
+    height: 40px; /* Ajusta según sea necesario */
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.navbar-auth {
+    display: flex;
+    gap: 1rem;
+}
+
+.auth-button {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: #2190FF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #176bc4;
+}
+
+.navbar-user {
     display: flex;
     align-items: center;
+    gap: 1rem;
 }
 
-.navbar-left, .navbar-right {
-    flex: 1;
+.navbar-user span {
+    font-weight: 500;
 }
 
-.navbar-center {
-    flex: 0 1 auto;
-    display: flex;
-    justify-content: center;
-    margin: 0 150px;
-}
-
-.navbar-left button {
-    background-color: #f9f9f9;
-    color: black;
-    border: 2px solid #00BFFF;
-    border-radius: 20px;
-    padding: 10px 20px;
-    margin-right: 12px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.navbar-left button:hover {
-    text-decoration: underline;
-}
-
-.logo img {
-    height: 40px;
-}
-
-.navbar-right ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-.navbar-right ul li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.navbar-right ul li a:hover {
-    background-color: white;
-    text-decoration: underline;
-}
-
-/* Responsive Styles */
-@media (max-width: 980px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar-left, .navbar-center, .navbar-right {
-        width: 100%;
-        margin: 0.5rem 0;
-    }
-
-    .navbar-center {
-        order: -1;
-        justify-content: center;
-    }
-
-    .navbar-right ul {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar-right ul li a {
-        padding: 10px 0;
-    }
-}

@@ -1,27 +1,11 @@
 import React from 'react';
 import './LandingPage.css'; // Importa el archivo de estilos CSS para LandingPage
-import Logo from '../../LogoSH.svg'; // Ajusta la ruta según la estructura de tu proyecto
+
 
 const LandingPage = () => {
     return (
         <div>
-            <nav className="navbar">
-                <div className="navbar-left">
-                    <button><a href="/signup">SignUp</a></button>
-                    <button><a href="/login">LogIn</a></button>
-                </div>
-                <div className="navbar-center">
-                    <a href="/" className="logo"><img src={Logo} alt="Logo" /></a>
-                </div>
-                <div className="navbar-right">
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="#appointments">Appointments</a></li>
-                        <li><a href="#health-blog">Health Blog</a></li>
-                        <li><a href="#reviews">Reviews</a></li>
-                    </ul>
-                </div>
-            </nav>
+            {/* Elimina la navbar aquí */}
 
             <section className="hero-section">
                 <div>
@@ -52,5 +36,6 @@ const LandingPage = () => {
 }
 
 export default LandingPage;
+
 
 

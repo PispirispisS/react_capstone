@@ -6,10 +6,12 @@ import SignUpForm from './Components/SignUpForm/SignupForm.js';
 import LogInForm from './Components/LogInForm/LogInForm.js';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultationBooking/InstantConsultation.js';
 import BookingConsultation from './Components/BookingConsultation.js'; 
+import Notification from './Components/Notification/Notification.js'; // Importa el componente de notificación
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userName, setUserName] = useState('');
+    const [showNotification, setShowNotification] = useState(false);
 
     useEffect(() => {
         const token = sessionStorage.getItem('auth-token');
@@ -25,6 +27,13 @@ function App() {
         setUserName('');
     };
 
+    const handleShowNotification = () => {
+        setShowNotification(true);
+        setTimeout(() => {
+            setShowNotification(false);
+        }, 3000); // Oculta la notificación después de 3 segundos
+    };
+
     return (
         <Router>
             <Navbar isAuthenticated={isAuthenticated} userName={userName} handleLogout={handleLogout} />
@@ -32,14 +41,21 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/signup" element={<SignUpForm />} />
                 <Route path="/login" element={<LogInForm />} />
-                <Route path="/instant-consultation" element={<InstantConsultation />} />
-                <Route path="/booking-consultation" element={<BookingConsultation />} /> {/* Nueva ruta */}
+                <Route path="/instant-consultation" element={<InstantConsultation handleShowNotification={handleShowNotification} />} />
+                <Route path="/booking-consultation" element={<BookingConsultation />} />
             </Routes>
+            {showNotification && (
+                <Notification>
+                    <p>Your notification message here</p>
+                </Notification>
+            )}
         </Router>
     );
 }
 
 export default App;
+
+
 
 
 
