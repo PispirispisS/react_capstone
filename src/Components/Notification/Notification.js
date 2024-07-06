@@ -1,41 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import './Notification.css'; // Importa el archivo de estilos CSS de Notification
+import React, { useEffect, useState } from 'react';
+import './Notification.css'; // Archivo de estilos
 
-const Notification = ({ children }) => {
-  const [showNotification, setShowNotification] = useState(false);
-  const [appointmentCancelled, setAppointmentCancelled] = useState(false);
-
-  // Esta función simula la lógica para cancelar una cita y ocultar la notificación
-  const cancelAppointment = () => {
-    // Aquí se realizaría la lógica para cancelar la cita
-    // En este ejemplo, simplemente mostramos cómo cambiar el estado
-    setAppointmentCancelled(true);
-
-    // Luego de un tiempo, podríamos ocultar la notificación
-    setTimeout(() => {
-      setShowNotification(false);
-    }, 2000); // Oculta la notificación después de 2 segundos
-  };
+const Notification = ({ appointmentCancelled, appointmentDetails }) => {
+  const [showNotification, setShowNotification] = useState(true);
 
   useEffect(() => {
-    // Aquí podrías escuchar cambios en el estado o eventos que indiquen la cancelación de la cita
     if (appointmentCancelled) {
-      setShowNotification(false); // Oculta la notificación cuando se cancela la cita
+      setShowNotification(false);
     }
   }, [appointmentCancelled]);
 
   return (
-    <div className={`notification-container ${showNotification ? 'show' : ''}`}>
-      <div className="notification-content">
-        <span className="close-button" onClick={() => setShowNotification(false)}>
-          &times;
-        </span>
-        <h3>Notification Title</h3>
-        <p>Notification message goes here.</p>
-        {children}
-        <button onClick={cancelAppointment}>Cancel Appointment</button>
+    showNotification && (
+      <div className="notification">
+        <h3>Appointment Details</h3>
+        <p><strong>User:</strong> {appointmentDetails.userName}</p>
+        <p><strong>Doctor:</strong> {appointmentDetails.doctorName}</p>
+        <p><strong>Date:</strong> {appointmentDetails.date}</p>
+        <p><strong>Time:</strong> {appointmentDetails.time}</p>
+        <button onClick={() => setShowNotification(false)}>Dismiss</button>
       </div>
-    </div>
+    )
   );
 };
 

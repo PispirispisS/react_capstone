@@ -6,12 +6,12 @@ import SignUpForm from './Components/SignUpForm/SignupForm.js';
 import LogInForm from './Components/LogInForm/LogInForm.js';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultationBooking/InstantConsultation.js';
 import BookingConsultation from './Components/BookingConsultation.js'; 
-import Notification from './Components/Notification/Notification.js'; // Importa el componente de notificación
+import Notification from './Components/Notification/Notification.js';
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userName, setUserName] = useState('');
-    const [showNotification, setShowNotification] = useState(false);
+    const [notificationDetails, setNotificationDetails] = useState(null);
 
     useEffect(() => {
         const token = sessionStorage.getItem('auth-token');
@@ -27,11 +27,11 @@ function App() {
         setUserName('');
     };
 
-    const handleShowNotification = () => {
-        setShowNotification(true);
+    const handleShowNotification = (details) => {
+        setNotificationDetails(details);
         setTimeout(() => {
-            setShowNotification(false);
-        }, 3000); // Oculta la notificación después de 3 segundos
+            setNotificationDetails(null);
+        }, 3000);
     };
 
     return (
@@ -42,25 +42,13 @@ function App() {
                 <Route path="/signup" element={<SignUpForm />} />
                 <Route path="/login" element={<LogInForm />} />
                 <Route path="/instant-consultation" element={<InstantConsultation handleShowNotification={handleShowNotification} />} />
-                <Route path="/booking-consultation" element={<BookingConsultation />} />
+                <Route path="/booking-consultation" element={<BookingConsultation handleShowNotification={handleShowNotification} />} />
             </Routes>
-            {showNotification && (
-                <Notification>
-                    <p>Your notification message here</p>
-                </Notification>
+            {notificationDetails && (
+                <Notification appointmentDetails={notificationDetails} />
             )}
         </Router>
     );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-

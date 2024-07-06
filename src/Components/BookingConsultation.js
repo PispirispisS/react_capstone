@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DoctorCard from './DoctorCard/DoctorCard.js';
 import FindDoctorSearch from './FindDoctorSearch/FindDoctorSearch.js';
 
-const BookingConsultation = () => {
+const BookingConsultation = ({ handleShowNotification }) => {
   const [doctors, setDoctors] = useState([]);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [isSearched, setIsSearched] = useState(false);
@@ -42,7 +42,7 @@ const BookingConsultation = () => {
             <h2>{filteredDoctors.length} doctors found</h2>
             {filteredDoctors.length > 0 ? (
               filteredDoctors.map(doctor => (
-                <DoctorCard key={doctor.id} {...doctor} />
+                <DoctorCard key={doctor.id} {...doctor} handleShowNotification={handleShowNotification} />
               ))
             ) : (
               <p>No doctors found.</p>

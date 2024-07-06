@@ -5,7 +5,7 @@ import './DoctorCard.css';
 import AppointmentForm from '../AppointmentForm/AppointmentForm';
 import { v4 as uuidv4 } from 'uuid';
 
-const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
+const DoctorCard = ({ name, speciality, experience, ratings, profilePic, handleShowNotification }) => {
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
 
@@ -16,6 +16,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
   const handleCancel = (appointmentId) => {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
     setAppointments(updatedAppointments);
+    handleShowNotification(`Appointment with ${name} has been canceled.`);
   };
 
   const handleFormSubmit = (appointmentData) => {
@@ -26,6 +27,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
     const updatedAppointments = [...appointments, newAppointment];
     setAppointments(updatedAppointments);
     setShowModal(false);
+    handleShowNotification(`Appointment booked with ${name} on ${appointmentData.appointmentDate} at ${appointmentData.appointmentTime}.`);
   };
 
   return (
@@ -110,4 +112,6 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
 };
 
 export default DoctorCard;
+
+
 
