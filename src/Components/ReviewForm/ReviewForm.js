@@ -1,70 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import ReviewForm from './ReviewForm';
+import './ReviewForm.css';
 
-const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
-  const [selectedDoctor, setSelectedDoctor] = useState(null);
+const ReviewForm = () => {
+    const [doctors, setDoctors] = useState([]);
 
-  useEffect(() => {
-    fetch('https://api.npoint.io/your-api-endpoint')
-      .then(response => response.json())
-      .then(data => {
-        const doctorsWithReviews = data.map(doctor => ({ ...doctor, reviewGiven: '' }));
-        setReviews(doctorsWithReviews);
-      })
-      .catch(error => console.error('Error fetching doctor data:', error));
-  }, []);
+    useEffect(() => {
+        // Simula una llamada a una API para obtener la lista de doctores
+        const fetchDoctors = async () => {
+            const response = await fetch('https://api.npoint.io/9a5543d36f1460da2f63'); // Ajusta la URL de la API según sea necesario
+            const data = await response.json();
+            setDoctors(data);
+        };
+        fetchDoctors();
+    }, []);
 
-  const handleReviewSubmit = (review) => {
-    setReviews(prevReviews => 
-      prevReviews.map(doctor => 
-        doctor.name === review.doctorName ? { ...doctor, reviewGiven: review.comments } : doctor
-      )
+    return (
+        <div className="review-form-container">
+            <h2>Reviews</h2>
+            <p>Be an active part of our StayHealthy Community! Tell the others how was your experience so they know what to expect</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Doctor Name</th>
+                        <th>Doctor Speciality</th>
+                        <th>Provide Review</th>
+                        <th>Review Given</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {doctors.map((doctor, index) => (
+                        <tr key={doctor.id}>
+                            <td>{index + 1}</td>
+                            <td>{doctor.name}</td>
+                            <td>{doctor.speciality}</td>
+                            <td>
+                                <button className="review-button">Give Review</button>
+                            </td>
+                            <td></td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     );
-    setSelectedDoctor(null);
-  };
-
-  return (
-    <div>
-      <h1>Reviews</h1>
-      <p>Be an active part of our StayHealthy Community! Tell the others how was your experience so they know what to expect</p>
-      <table>
-        <thead>
-          <tr>
-            <th>S.No</th>
-            <th>Doctor Name</th>
-            <th>Doctor Specialty</th>
-            <th>Provide Review</th>
-            <th>Review given</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reviews.map((doctor, index) => (
-            <tr key={doctor.id}>
-              <td>{index + 1}</td>
-              <td>{doctor.name}</td>
-              <td>{doctor.specialty}</td>
-              <td>
-                <button 
-                  onClick={() => setSelectedDoctor(doctor)} 
-                  disabled={!!doctor.reviewGiven}
-                >
-                  Give Review
-                </button>
-              </td>
-              <td>{doctor.reviewGiven}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {selectedDoctor && (
-        <ReviewForm 
-          doctor={selectedDoctor} 
-          onSubmit={handleReviewSubmit} 
-        />
-      )}
-    </div>
-  );
 };
 
-export default Reviews;
+export default ReviewForm;

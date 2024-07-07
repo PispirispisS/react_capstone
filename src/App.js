@@ -7,6 +7,7 @@ import LogInForm from './Components/LogInForm/LogInForm.js';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultationBooking/InstantConsultation.js';
 import BookingConsultation from './Components/BookingConsultation.js';
 import Notification from './Components/Notification/Notification.js';
+import ReviewForm from './Components/ReviewForm/ReviewForm.js'; // Importa el nuevo componente
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -54,6 +55,7 @@ function App() {
                     path="/booking-consultation"
                     element={<BookingConsultation handleShowNotification={handleShowNotification} />}
                 />
+                <Route path="/reviews" element={<ReviewForm />} /> {/* Añade la ruta para el nuevo componente */}
             </Routes>
             {notificationDetails && (
                 <Notification appointmentDetails={notificationDetails} onCancel={handleCancelAppointment} />
