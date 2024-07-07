@@ -27,7 +27,11 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, handleS
     const updatedAppointments = [...appointments, newAppointment];
     setAppointments(updatedAppointments);
     setShowModal(false);
-    handleShowNotification(`Appointment booked with ${name} on ${appointmentData.appointmentDate} at ${appointmentData.appointmentTime}.`);
+    handleShowNotification({
+      doctorName: name,
+      appointmentDate: appointmentData.appointmentDate,
+      appointmentTime: appointmentData.appointmentTime
+    });
   };
 
   return (

@@ -31,12 +31,12 @@ function App() {
         setNotificationDetails(details);
         setTimeout(() => {
             setNotificationDetails(null);
-        }, 10000);
+        }, 10000); // Ajusta el tiempo de visualización de la notificación (en milisegundos)
     };
 
     const handleCancelAppointment = () => {
         setNotificationDetails(null);
-        // Aquí puedes implementar lógica adicional al cancelar la cita
+        // Aquí puedes implementar lógica adicional al cancelar la cita si es necesario
     };
 
     return (
