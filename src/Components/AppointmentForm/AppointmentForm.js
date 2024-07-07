@@ -9,7 +9,9 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    // Llama a la función onSubmit que se pasa desde el componente padre
     onSubmit({ name, phoneNumber, appointmentDate, appointmentTime });
+    // Limpia los campos del formulario después de enviarlo
     setName('');
     setPhoneNumber('');
     setAppointmentDate('');
@@ -64,4 +66,5 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
 };
 
 export default AppointmentForm;
+
 

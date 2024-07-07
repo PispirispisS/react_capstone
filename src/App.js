@@ -5,7 +5,7 @@ import LandingPage from './Components/Landing_Page/LandingPage.js';
 import SignUpForm from './Components/SignUpForm/SignupForm.js';
 import LogInForm from './Components/LogInForm/LogInForm.js';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultationBooking/InstantConsultation.js';
-import BookingConsultation from './Components/BookingConsultation.js'; 
+import BookingConsultation from './Components/BookingConsultation.js';
 import Notification from './Components/Notification/Notification.js';
 
 function App() {
@@ -31,7 +31,12 @@ function App() {
         setNotificationDetails(details);
         setTimeout(() => {
             setNotificationDetails(null);
-        }, 3000);
+        }, 10000);
+    };
+
+    const handleCancelAppointment = () => {
+        setNotificationDetails(null);
+        // Aquí puedes implementar lógica adicional al cancelar la cita
     };
 
     return (
@@ -41,11 +46,17 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/signup" element={<SignUpForm />} />
                 <Route path="/login" element={<LogInForm />} />
-                <Route path="/instant-consultation" element={<InstantConsultation handleShowNotification={handleShowNotification} />} />
-                <Route path="/booking-consultation" element={<BookingConsultation handleShowNotification={handleShowNotification} />} />
+                <Route
+                    path="/instant-consultation"
+                    element={<InstantConsultation handleShowNotification={handleShowNotification} />}
+                />
+                <Route
+                    path="/booking-consultation"
+                    element={<BookingConsultation handleShowNotification={handleShowNotification} />}
+                />
             </Routes>
             {notificationDetails && (
-                <Notification appointmentDetails={notificationDetails} />
+                <Notification appointmentDetails={notificationDetails} onCancel={handleCancelAppointment} />
             )}
         </Router>
     );

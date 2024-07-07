@@ -112,6 +112,3 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, handleS
 };
 
 export default DoctorCard;
-
-
-

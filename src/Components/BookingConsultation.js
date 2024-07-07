@@ -29,6 +29,13 @@ const BookingConsultation = ({ handleShowNotification }) => {
     }
   };
 
+  const handleDoctorSelection = (doctor) => {
+    // Aquí puedes mostrar la notificación al seleccionar un doctor
+    handleShowNotification(`You selected Dr. ${doctor.name}. Please confirm your booking.`);
+    // Lógica para proceder con la cita, por ejemplo, enviar datos al servidor, etc.
+    // Puedes implementar esta lógica dependiendo de tu flujo de la aplicación
+  };
+
   useEffect(() => {
     getDoctorsDetails();
   }, []);
@@ -42,7 +49,12 @@ const BookingConsultation = ({ handleShowNotification }) => {
             <h2>{filteredDoctors.length} doctors found</h2>
             {filteredDoctors.length > 0 ? (
               filteredDoctors.map(doctor => (
-                <DoctorCard key={doctor.id} {...doctor} handleShowNotification={handleShowNotification} />
+                <DoctorCard
+                  key={doctor.id}
+                  {...doctor}
+                  handleShowNotification={handleShowNotification}
+                  handleDoctorSelection={handleDoctorSelection} // Pasar función de selección
+                />
               ))
             ) : (
               <p>No doctors found.</p>

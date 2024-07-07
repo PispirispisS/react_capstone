@@ -1,26 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import './Notification.css'; // Archivo de estilos
+import './Notification.css'; // Asegúrate de tener estilos CSS adecuados para la notificación
 
-const Notification = ({ appointmentCancelled, appointmentDetails }) => {
-  const [showNotification, setShowNotification] = useState(true);
+const Notification = ({ appointmentDetails, onCancel }) => {
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (appointmentCancelled) {
-      setShowNotification(false);
+    if (appointmentDetails) {
+      setIsVisible(true);
+
+      // Ocultar la notificación después de 5 segundos
+      const timeout = setTimeout(() => {
+        setIsVisible(false);
+      }, 5000);
+
+      return () => clearTimeout(timeout);
     }
-  }, [appointmentCancelled]);
+  }, [appointmentDetails]);
+
+  const handleCancelAppointment = () => {
+    setIsVisible(false);
+    onCancel(); // Llama a la función para cancelar la cita
+  };
 
   return (
-    showNotification && (
-      <div className="notification">
-        <h3>Appointment Details</h3>
-        <p><strong>User:</strong> {appointmentDetails.userName}</p>
-        <p><strong>Doctor:</strong> {appointmentDetails.doctorName}</p>
-        <p><strong>Date:</strong> {appointmentDetails.date}</p>
-        <p><strong>Time:</strong> {appointmentDetails.time}</p>
-        <button onClick={() => setShowNotification(false)}>Dismiss</button>
-      </div>
-    )
+    <div className={`notification-container ${isVisible ? 'show' : ''}`}>
+      {appointmentDetails && (
+        <div className="notification-content">
+          <h3>Appointment Booked!</h3>
+          <p>
+            <strong>Doctor:</strong> {appointmentDetails.doctorName}
+          </p>
+          <p>
+            <strong>Date:</strong> {appointmentDetails.appointmentDate}
+          </p>
+          <p>
+            <strong>Time:</strong> {appointmentDetails.appointmentTime}
+          </p>
+          <button onClick={handleCancelAppointment}>Cancel Appointment</button>
+        </div>
+      )}
+    </div>
   );
 };
 

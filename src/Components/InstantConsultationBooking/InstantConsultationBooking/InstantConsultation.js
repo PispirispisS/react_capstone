@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import FindDoctorSearch from '/home/project/react_capstone/src/Components/FindDoctorSearch/FindDoctorSearch.js';
 import DoctorCard from '/home/project/react_capstone/src/Components/DoctorCard/DoctorCard.js';
 
-const InstantConsultation = () => {
+const InstantConsultation = ({ handleShowNotification }) => {
     const [searchParams] = useSearchParams();
     const [doctors, setDoctors] = useState([]);
     const [filteredDoctors, setFilteredDoctors] = useState([]);
@@ -18,7 +18,6 @@ const InstantConsultation = () => {
                     const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
                     setFilteredDoctors(filtered);
                     setIsSearched(true);
-                    // window.reload() // No es necesario
                 } else {
                     setFilteredDoctors([]);
                     setIsSearched(false);
@@ -38,18 +37,19 @@ const InstantConsultation = () => {
             );
             setFilteredDoctors(filtered);
             setIsSearched(true);
-            // window.location.reload() // No es necesario
         }
+    };
+
+    const handleDoctorSelection = (doctor) => {
+        // Aquí puedes mostrar la notificación al seleccionar un doctor
+        handleShowNotification(`You selected Dr. ${doctor.name}. Please confirm your booking.`);
+        // Lógica para proceder con la cita, por ejemplo, enviar datos al servidor, etc.
+        // Puedes implementar esta lógica dependiendo de tu flujo de la aplicación
     };
 
     useEffect(() => {
         getDoctorsDetails();
-        // const authtoken = sessionStorage.getItem("auth-token");
-        // if (!authtoken) {
-        //     navigate("/login");
-        // }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [searchParams]); // Agrega searchParams a la lista de dependencias
+    }, [searchParams]);
 
     return (
         <center>
@@ -61,7 +61,15 @@ const InstantConsultation = () => {
                             <h2>{filteredDoctors.length} doctors are available {searchParams.get('location')}</h2>
                             <h3>Book appointments with minimum wait-time & verified doctor details</h3>
                             {filteredDoctors.length > 0 ? (
-                                filteredDoctors.map(doctor => <DoctorCard className="doctorcard" {...doctor} key={doctor.name} />)
+                                filteredDoctors.map(doctor => (
+                                    <DoctorCard
+                                        className="doctorcard"
+                                        {...doctor}
+                                        key={doctor.name}
+                                        handleShowNotification={handleShowNotification}
+                                        handleDoctorSelection={handleDoctorSelection} // Pasar función de selección
+                                    />
+                                ))
                             ) : (
                                 <p>No doctors found.</p>
                             )}
