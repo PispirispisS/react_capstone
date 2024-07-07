@@ -1,43 +1,62 @@
 .notification-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 20px;
-  max-width: 300px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.notification-container.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.notification-content {
-  text-align: left;
-}
-
-.notification-content h3 {
-  margin-top: 0;
-}
-
-.notification-content p {
-  margin-bottom: 5px;
-}
-
-.notification-content button {
-  margin-top: 10px;
-  background-color: #f44336;
-  color: #ffffff;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-.notification-content button:hover {
-  background-color: #d32f2f;
-}
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .notification-container.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .notification-content {
+    text-align: left;
+  }
+  
+  .notification-content h3 {
+    margin-top: 0;
+  }
+  
+  .notification-content p {
+    margin-bottom: 5px;
+  }
+  
+  .notification-content .confirmation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px; 
+  }
+  
+  .notification-content .yes-button {
+    background-color: #ff4d4f; /* Rojo */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 3px;
+  }
+  
+  .notification-content .no-button {
+    background-color: #1890ff; /* Azul */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 3px;
+  }
+  
+  .notification-content button:hover {
+    opacity: 0.8;
+  }
+  
