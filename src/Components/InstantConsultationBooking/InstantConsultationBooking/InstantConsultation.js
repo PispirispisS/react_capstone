@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './InstantConsultation.css';
 import { useSearchParams } from 'react-router-dom';
-import FindDoctorSearch from '/home/project/react_capstone/src/Components/FindDoctorSearch/FindDoctorSearch.js';
-import DoctorCard from '/home/project/react_capstone/src/Components/DoctorCard/DoctorCard.js';
+import FindDoctorSearch from '../../FindDoctorSearch/FindDoctorSearch.js';
+import DoctorCard from '../../DoctorCard/DoctorCard.js';
 
 const InstantConsultation = ({ handleShowNotification }) => {
     const [searchParams] = useSearchParams();

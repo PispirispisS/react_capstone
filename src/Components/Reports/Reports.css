@@ -1,0 +1,66 @@
+.reports-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.reports-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.reports-table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.reports-table th, .reports-table td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.reports-table th {
+    background-color: #e6f7ff;
+    font-weight: bold;
+}
+
+.report-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.report-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #80cfff;
+    color: black;
+}
+
+.report-buttons {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    justify-content: center;
+}
+
+.report-buttons button {
+    padding: 8px 16px; /* Reduce el tamaño del botón */
+    font-size: 14px; /* Reduce el tamaño del texto */
+    border-radius: 20px;
+    background-color: #2190FF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.report-buttons button:hover {
+    background-color: #176bc4;
+}

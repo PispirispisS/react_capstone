@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import './SignupForm.css'; // Asegúrate de importar el archivo CSS
+import './SignupForm.css';
 import Logo from '../../LogoSH.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const SignupForm = () => {
+const SignupForm = ({ setIsAuthenticated, setUserProfile }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: '',
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,7 +19,20 @@ const SignupForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aquí agregar lógica para enviar el formulario
+        // Guardar los datos del usuario en sessionStorage
+        sessionStorage.setItem('auth-token', 'fake-auth-token');
+        sessionStorage.setItem('userName', formData.name);
+        sessionStorage.setItem('userEmail', formData.email);
+        sessionStorage.setItem('userProfileImage', 'https://via.placeholder.com/40'); // Imagen por defecto
+
+        setIsAuthenticated(true);
+        setUserProfile({
+            name: formData.name,
+            email: formData.email,
+            profileImage: 'https://via.placeholder.com/40'
+        });
+
+        navigate('/');
     };
 
     return (
@@ -36,6 +51,7 @@ const SignupForm = () => {
                             placeholder="Enter your name"
                             value={formData.name}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -47,6 +63,7 @@ const SignupForm = () => {
                             placeholder="Enter your email"
                             value={formData.email}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -58,6 +75,7 @@ const SignupForm = () => {
                             placeholder="Enter your password"
                             value={formData.password}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <button type="submit">Sign Up</button>
@@ -68,6 +86,7 @@ const SignupForm = () => {
 };
 
 export default SignupForm;
+
 
 
 

@@ -1,50 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import './LogInForm.css'; // Mantener el archivo de estilos CSS para LogInForm
+import './LogInForm.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../LogoSH.svg';
-import {API_URL} from '../../config.js'
 
-const Login = () => {
-    const [password, setPassword] = useState("");
+const Login = ({ setIsAuthenticated, setUserProfile }) => {
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
         if (sessionStorage.getItem("auth-token")) {
-            navigate("/")
+            navigate("/");
         }
     }, [navigate]);
 
-    const login = async (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
-        const res = await fetch(`${API_URL}/api/auth/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
+        // Simular autenticación
+        sessionStorage.setItem('auth-token', 'fake-auth-token');
+        sessionStorage.setItem('userName', email.split('@')[0]);
+        sessionStorage.setItem('userEmail', email);
+        sessionStorage.setItem('userProfileImage', 'https://via.placeholder.com/40'); // Imagen por defecto
+
+        setIsAuthenticated(true);
+        setUserProfile({
+            name: email.split('@')[0],
+            email: email,
+            profileImage: 'https://via.placeholder.com/40'
         });
-        const json = await res.json();
-        
-        if (json.authtoken) {
-            sessionStorage.setItem('auth-token', json.authtoken);
-            sessionStorage.setItem('email', email);
-            const userName = email.split('@')[0];
-            sessionStorage.setItem("userName", userName);
-            navigate('/');
-            window.location.reload();
-        } else {
-            if (json.errors) {
-                for (const error of json.errors) {
-                    alert(error.msg);
-                }
-            } else {
-                alert(json.error);
-            }
-        }
+
+        navigate('/');
     };
 
     return (
@@ -53,7 +38,7 @@ const Login = () => {
                 <img src={Logo} alt="Logo" className="logo" />
                 <h1>Log In</h1>
                 <p>New here? <Link to="/signup">Sign Up</Link></p>
-                <form onSubmit={login} method="post">
+                <form onSubmit={handleLogin}>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
                         <input
@@ -63,6 +48,7 @@ const Login = () => {
                             placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -74,6 +60,7 @@ const Login = () => {
                             placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
                     </div>
                     <button type="submit">Log In</button>
@@ -81,8 +68,9 @@ const Login = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Login;
+
 
 

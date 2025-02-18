@@ -1,6 +1,3 @@
-/* Navbar.css */
-
-/* Estilos generales para el navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -15,7 +12,7 @@
 }
 
 .navbar-logo img {
-    height: 40px; /* Ajusta según sea necesario */
+    height: 40px;
 }
 
 .navbar-links {
@@ -34,6 +31,7 @@
 .navbar-auth {
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 
 .auth-button {
@@ -43,7 +41,6 @@
     color: #fff;
     border: none;
     cursor: pointer;
-    text-decoration: none;
     font-size: 1rem;
     transition: background-color 0.3s ease;
 }
@@ -58,7 +55,18 @@
     gap: 1rem;
 }
 
-.navbar-user span {
-    font-weight: 500;
+.profile-image {
+    width: 40px;  /* Ajustado al diseño de Figma */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    transition: transform 0.3s ease;
 }
+
+.profile-image:hover {
+    transform: scale(1.1);
+}
+
 
