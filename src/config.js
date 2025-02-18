@@ -1,5 +1,3 @@
-export const API_URL = window.location.hostname === "localhost" ? "https://fedeprzycho-8181.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/" : "add your theia server side url";
-console.log(
-    "API_URL :",
-    API_URL
-);
+const API_URL = "mongodb://root:1Gw6PpzvNAr5H23IL0Yx1yJ0@172.21.157.238:27017";
+
+module.exports = { API_URL };

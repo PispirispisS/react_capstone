@@ -1,33 +1,34 @@
 const express = require('express');
 const cors = require('cors');
-const http = require('http');
+const path = require('path');
 const connectToMongo = require('./db');
+
 const app = express();
-
-
-app.set('view engine','ejs')
-app.use(express.static('public'))
-
 const PORT = process.env.PORT || 8181;
 
+// Configuración del motor de vistas (si lo necesitas)
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
-// Connect to MongoDB
+// Conectar a MongoDB
 connectToMongo();
 
-// Routes
+// Rutas API
 app.use('/api/auth', require('./routes/auth'));
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+// ⚡ Servir archivos estáticos desde `build` para producción
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Manejo de rutas desconocidas (redirige a `index.html`)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-
-
-  // Start the server
+// Iniciar el servidor
 app.listen(PORT, () => {
-console.log(`Server is running on port http://localhost:${PORT}`);
+    console.log(`🚀 Server is running on port http://localhost:${PORT}`);
 });
